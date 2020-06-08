@@ -14,9 +14,11 @@ function render($path, $vars = []) {
   return $output;
 }
 
-function renderPage($pagePath, $vars = [], $title) {
-  $output = render('layouts/header', ['title' => $title]);
-  $output .= render("pages/$pagePath");
+function renderPage($pagePath, $title, $vars = []) {
+  $pageTitle = "{$GLOBALS['config']['APP_PAGE_TITLE']} $title";
+  
+  $output = render('layouts/header', ['title' => $pageTitle]);
+  $output .= render("pages/$pagePath", $vars);
   $output .= render('layouts/footer');
 
   return $output;
@@ -28,4 +30,10 @@ function getClassNameFromPath($classPath) {
   $exploded = explode('/', $classPath);
 
   return explode('.', end($exploded))[0];
+}
+
+function getControllerPathByName($name) {
+  $path = $GLOBALS['config']['CONTROLLERS_PATH'];
+
+  return "$path/{$name}.php";
 }

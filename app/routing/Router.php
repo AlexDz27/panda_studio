@@ -23,10 +23,10 @@ class Router {
   }
 
   private function handleRoute() {
-    $controllerPath = $this->matchedRoute->controllerPath;
-    require_once $controllerPath;
+    $path = getControllerPathByName($this->matchedRoute->controllerName);
+    require_once $path;
 
-    $controllerClassName = getClassNameFromPath($controllerPath);
+    $controllerClassName = getClassNameFromPath($path);
     $controller = new $controllerClassName();
 
     $controller->{$this->matchedRoute->action}();

@@ -1,15 +1,13 @@
 <?php
 
-// require_once 'Handlers/FilePath.php';
-
 class Route {
   public $uri;
-  public $controllerPath;
+  public $controllerName;
   public $action;
 
-  public function __construct($uri, string $controllerPath, string $action) {
+  public function __construct($uri, string $controllerName, string $action) {
     $this->uri = $uri;
-    $this->controllerPath = $controllerPath;
+    $this->controllerName = $controllerName;
     $this->action = $action;
   }
 }
