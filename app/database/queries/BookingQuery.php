@@ -11,7 +11,7 @@ class BookingQuery {
 
   // SELECT
   public function getAllBookings() {
-    $query = "SELECT * FROM booking WHERE id = 5";
+    $query = "SELECT * FROM booking ORDER BY date ASC, time ASC";
     $statement = $this->db->pdo->prepare($query);
     $statement->execute();
 
@@ -21,11 +21,12 @@ class BookingQuery {
 
   // INSERT
   public function createBooking($booking) {
-    $query = "INSERT INTO booking (date, time, name, phone) VALUES (:date, :time, :name, :phone)";
+    $query = "INSERT INTO booking (date, beautified_date, time, name, phone) VALUES (:date, :beautified_date, :time, :name, :phone)";
     $statement = $this->db->pdo->prepare($query);
     $statement->execute(
       [
         'date' => $booking['date'],
+        'beautified_date' => $booking['beautified_date'],
         'time' => $booking['time'],
         'name' => $booking['name'],
         'phone' => $booking['phone']

@@ -1,22 +1,37 @@
 <?php
 
 require_once "{$GLOBALS['config']['APP_DIR']}/security/Guard.php";
-require_once "{$GLOBALS['config']['APP_DIR']}/database/queries/BookingQuery.php";
+require_once "{$GLOBALS['config']['APP_DIR']}/domain/admin/Dashboard.php";
 
 class DashboardController {
   private $guard;
+  private $dashboard;
   private $bookingQuery;
+
+  public $isAdminPage = true;
 
   public function __construct() {
     $this->guard = new Guard();
+    $this->dashboard = new Dashboard();
     $this->bookingQuery = new BookingQuery();
   }
 
-  public function dashboard() {
+  public function bookings() {
     $this->guard->protect();
 
-    $bookings = $this->bookingQuery->getAllBookings();
+    $todayDate = $this->dashboard->getTodayDate();
 
-    echo renderPage('booking/dashboard', '_Администратор', compact('bookings'));
+    $days = $this->dashboard->getRenderedDays();
+    // var_dump($bookings); die();
+
+    echo renderPage(
+      'admin/bookings',
+      '_Администратор',
+      [
+        'days' => $days,
+        'isAdminPage' => $this->isAdminPage,
+        'todayDate' => $todayDate
+      ]
+    );
   }
 }

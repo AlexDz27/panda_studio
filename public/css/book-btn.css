@@ -1,0 +1,27 @@
+@keyframes book-btn-gradient { 
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.book-btn {
+  position: fixed;
+  bottom: 35px;
+  right: 30px;
+
+  background-color: #08efc4;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 55px;
+  border-radius: 30px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to right, #CB3066, #08efc4);
+  animation: book-btn-gradient 6s ease infinite;
+  background-size: 150% 150%;
+  transition: box-shadow .3s;
+  z-index: 1;
+}
+.book-btn:hover {
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.4);
+}

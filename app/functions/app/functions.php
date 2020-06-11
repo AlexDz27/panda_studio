@@ -16,10 +16,11 @@ function render($path, $vars = []) {
 
 function renderPage($pagePath, $title = '', $vars = []) {
   $pageTitle = buildPageTitle($title);
+  $vars['title'] = $pageTitle;
   
-  $output = render('layouts/header', ['title' => $pageTitle]);
+  $output = render('layouts/header', $vars);
   $output .= render("pages/$pagePath", $vars);
-  $output .= render('layouts/footer');
+  $output .= render('layouts/footer', $vars);
 
   return $output;
 }
@@ -49,4 +50,55 @@ function getControllerPathByName($name) {
   $path = $GLOBALS['config']['CONTROLLERS_PATH'];
 
   return "$path/{$name}.php";
+}
+
+// Domain
+
+// $date format is yyyy-mm-dd
+function getBeautifiedDate($date) {
+  $year = substr($date, 0, 4);
+  $month = substr($date, 5, 2);
+  $day = substr($date, 8, 2);
+
+  $beautifiedMonth = null;
+  switch ($month) {
+    case '01':
+      $beautifiedMonth = 'января';
+      break;
+    case '02':
+      $beautifiedMonth = 'февраля';
+      break;
+    case '03':
+      $beautifiedMonth = 'марта';
+      break;
+    case '04':
+      $beautifiedMonth = 'апреля';
+      break;
+    case '05':
+      $beautifiedMonth = 'мая';
+      break;
+    case '06':
+      $beautifiedMonth = 'июня';
+      break;
+    case '07':
+      $beautifiedMonth = 'июля';
+      break;
+    case '08':
+      $beautifiedMonth = 'августа';
+      break;
+    case '09':
+      $beautifiedMonth = 'сентября';
+      break;
+    case '10':
+      $beautifiedMonth = 'октября';
+      break;
+    case '11':
+      $beautifiedMonth = 'ноября';
+      break;
+    case '12':
+      $beautifiedMonth = 'декабря';
+      break; 
+  }
+
+  return "$day $beautifiedMonth $year";
 }

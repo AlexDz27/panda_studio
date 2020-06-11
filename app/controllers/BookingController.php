@@ -2,6 +2,7 @@
 
 require_once $GLOBALS['config']['APP_DIR'] . '/forms/AddBookingForm.php';
 require_once $GLOBALS['config']['APP_DIR'] . '/database/queries/BookingQuery.php';
+require_once $GLOBALS['config']['APP_DIR'] . '/functions/app/functions.php';
 
 class BookingController {
   private $query;
@@ -31,6 +32,7 @@ class BookingController {
       } else {
         $booking = [];
         $booking['date'] = $form->date;
+        $booking['beautified_date'] = getBeautifiedDate($form->date);
         $booking['time'] = $form->time;
         $booking['name'] = $form->name;
         $booking['phone'] = $form->phone;

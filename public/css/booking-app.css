@@ -1,0 +1,104 @@
+.booking-app {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 40px;
+  color: #000;
+}
+.booking-app--inactive {
+  display: none;
+}
+
+.booking-app input {
+  font-size: 1.2rem;
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.booking-app__title {
+  font-size: 32px;
+  font-weight: lighter;
+}
+
+.booking-app__title-container {
+  margin-bottom: 30px;
+}
+
+.booking-app__section-container {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.booking-app__section-container-col-label {
+  display: block;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+.booking-app__section-submit-container {
+  margin: 0 auto;
+}
+
+.booking-app__submit {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 100%;
+  padding: 9px;
+  transition: color .2s, border-color .2s;
+}
+.booking-app__submit:hover {
+  color: #2ca8ff;
+  border: 1px solid #2ca8ff;
+}
+
+.button {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.bookings-screen {
+  background-color: #e8e8e8;;
+  display: none;
+  padding: 60px;
+}
+.bookings-screen--active {
+  display: block;
+}
+
+.booking-day--today {
+  border-top: 1px solid #de6c6c;
+  border-bottom: 1px solid #de6c6c;
+}
+
+.bookings {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.booking {
+  max-width: 300px;
+  border: 1px solid #c7c7c7;
+  border-radius: 2%;
+  margin-right: 55px;
+  margin-bottom: 50px;
+  padding: 9px;
+}
+
+.booking-info {
+  list-style-type: none;
+  padding: 0;
+}
+
+.booking-info li {
+  margin-bottom: 10px;
+}

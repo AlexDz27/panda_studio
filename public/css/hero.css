@@ -1,0 +1,50 @@
+.hero {
+	min-height: 600px;
+	background-color: #d6d6d6;
+	border-top: 1px solid transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url('../images/decorative/hero-panda-darkened.jpg');
+	background-size: cover;
+	background-position: center;
+	margin-top: 79px;
+	margin-bottom: 150px;
+}
+@media (max-width: 605px) {
+	.hero {
+		margin-top: 0;
+		min-height: 440px;
+		margin-bottom: 90px;
+	}
+}
+
+.hero-title {
+	margin-bottom: 100px;
+	color: #fff;
+	font-size: 42px;
+	font-weight: lighter;
+	display: block;
+	max-width: 700px;
+  text-align: center;
+  line-height: 1.35;
+	opacity: 0;
+	transition: opacity .3s;
+}
+@media (max-width: 605px) {
+	.hero-title {
+		margin-bottom: 0;
+		font-size: 32px;
+	}
+}
+
+@keyframes fade-out {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.animation__fade-out {
+	animation-name: fade-out;
+  animation-duration: 3.5s;
+  animation-fill-mode: forwards;
+}

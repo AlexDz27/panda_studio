@@ -1,0 +1,37 @@
+.book-form-container {
+  position: fixed;
+  background-color: rgba(51, 51, 51, 0.91);
+  right: 0;
+  top: 78px;
+  min-width: 100vw;
+  min-height: 100%;
+  z-index: 150;
+  transform: translateX(150vw);
+  transition: transform .8s;
+  color: #fff;
+}
+.book-form-container--active {
+  transform: translateX(0);
+}
+@media (max-width: 605px) {
+  .book-form-container {
+    top: 58px;
+  }
+}
+
+.book-form-container__close {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin-right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 82px;
+  color: #fff;
+}
+
+.book-form-container__content {
+  margin: 0 auto;
+  max-width: 360px;
+}

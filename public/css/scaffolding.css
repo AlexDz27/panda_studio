@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 30px;
+  color: #464646;
+  /*background-color: #d6d6d6; /* todo: delete */
+
+  /*min-height: 2200px;*/
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+section {
+  font-family: 'Roboto', 'Open Sans', 'Arial', sans-serif;
+}
+
+.decorized-button {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  text-align: center;
+  padding: 20px 40px;
+  border: 1px solid #616161;
+  font-size: 24px;
+  color: #464646;
+  transition: color .4s;
+}
+.decorized-button:hover {
+  color: #116fa7;
+  border: 1px solid #116fa7;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

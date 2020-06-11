@@ -1,8 +1,9 @@
 <?php
 
 // App domain specific
-$config['APP_TITLE'] = 'Panda Studio';
+$config['APP_TITLE'] = 'Студия "Панда"';
 $config['APP_PAGE_TITLE'] = "{$config['APP_TITLE']} | ";
+$config['APP_TIMEZONE'] = 'Europe/Minsk';
 
 // App src specific
 $config['APP_DIR'] = getcwd() . '/app';

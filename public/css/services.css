@@ -1,0 +1,64 @@
+.services {
+	margin-bottom: 300px;
+}
+@media (max-width: 605px) {
+	.services {
+		margin-bottom: 70px;;
+	}
+}
+
+.services__container {
+	display: flex;
+	justify-content: space-around;
+}
+@media (max-width: 605px) {
+	.services__container {
+		flex-direction: column;
+    align-items: center;
+	}
+}
+
+.service {
+	font-weight: lighter;
+	/*font-family: 'Roboto', 'Times New Roman', sans-serif;*/
+	text-align: center;
+	max-width: 270px;
+}
+@media (max-width: 605px) {
+	.service {
+		margin-bottom: 60px;
+	}
+}
+
+.service-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background-color: #fff;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background-position: 15% center;
+	background-size: cover;
+}
+.service-image__salt-cave {
+	background-image: url('../images/services/salt-cave.jpg');
+}
+.service-image__massage {
+	background-image: url('../images/services/massage.jpg');
+}
+.service-image__manicure {
+	background-image: url('../images/services/manicure.jpg');
+}
+.service-image__pedicure {
+	background-image: url('../images/services/pedicure.jpg');
+}
+
+.service__title {
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+
+.service__text {
+	font-size: 16px;
+	line-height: 25px;
+}

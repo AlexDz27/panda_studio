@@ -1,0 +1,25 @@
+.about-us {
+	margin-bottom: 250px;
+}
+
+@media (max-width: 650px) {
+	.about-us__video {
+    overflow: hidden;
+    position: relative;
+    width:100%;
+	}
+
+	.about-us__video::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+	}
+
+	.about-us__video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	}
+}

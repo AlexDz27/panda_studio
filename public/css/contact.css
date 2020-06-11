@@ -1,0 +1,12 @@
+.contact__schedule {
+	margin-bottom: 115px;
+}
+@media (max-width: 605px) {
+	.contact__schedule {
+		text-align: center;
+	}
+
+	.contact__text {
+		text-align: center;
+	}
+}

@@ -1,0 +1,30 @@
+.price-catalogue {
+	margin-bottom: 250px;
+}
+@media (max-width: 605px) {
+	.price-catalogue {
+		margin-bottom: 90px;
+	}
+}
+
+.price-catalogue__title {
+	font-weight: lighter;
+  font-size: 37px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.price-catalogue__images-container {
+	display: flex;
+	justify-content: space-around;
+}
+@media (max-width: 605px) {
+	.price-catalogue__images-container {
+		flex-direction: column;
+    align-items: center;
+	}
+}
+
+.price-catalogue-images-container__column {
+	max-width: 500px;
+}

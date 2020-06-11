@@ -9,7 +9,7 @@ return [
   // new Route('/add', $controllersPath . '/BookingController.php', 'add'),
   new Route('/', 'PageController', 'home'),
   new Route('/add', 'BookingController', 'add'),
-  new Route('/admin', '/admin/DashboardController', 'dashboard'),
+  new Route('/admin', '/admin/DashboardController', 'bookings'),
 
   // new Route('/asd/123', $controllersPath . '/PageController.php', 'asd')
 ];
