@@ -14,14 +14,27 @@ function render($path, $vars = []) {
   return $output;
 }
 
-function renderPage($pagePath, $title, $vars = []) {
-  $pageTitle = "{$GLOBALS['config']['APP_PAGE_TITLE']} $title";
+function renderPage($pagePath, $title = '', $vars = []) {
+  $pageTitle = buildPageTitle($title);
   
   $output = render('layouts/header', ['title' => $pageTitle]);
   $output .= render("pages/$pagePath", $vars);
   $output .= render('layouts/footer');
 
   return $output;
+}
+
+function buildPageTitle($title) {
+  $pageTitle = "{$GLOBALS['config']['APP_PAGE_TITLE']} $title";
+  define('ONLY_TITLE_TOKEN', '_'); // underscore
+
+  if (isEmptyString($title)) {
+    $pageTitle = "{$GLOBALS['config']['APP_TITLE']} $title";
+  } elseif (startsWith($title, ONLY_TITLE_TOKEN)) {
+    $pageTitle = substr($title, 1);
+  }
+
+  return $pageTitle;
 }
 
 // App

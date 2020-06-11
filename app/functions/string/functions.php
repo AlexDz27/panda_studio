@@ -10,6 +10,14 @@ function stringHasSubstring($string, $substring) {
   return strpos($string, $substring) !== false ? true: false;
 }
 
-function isNullOrEmptyString($str){
-  return (!isset($str) || trim($str) === '');
+function isNullOrEmptyString($string){
+  return (!isset($string) || trim($string) === '');
+}
+
+function isEmptyString($string) {
+  return $string === '';
+}
+
+function startsWith($string, $substring) {
+  return strpos($string, $substring) === 0;
 }

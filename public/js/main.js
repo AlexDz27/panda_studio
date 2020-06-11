@@ -1,6 +1,8 @@
 ;(function () {
 
   function Ajax() {
+    this.requestData = null;
+
     this.request = function (params) {
       if (params.requestData === undefined) {
         params.requestData = null;
@@ -11,21 +13,24 @@
       request.addEventListener('load', params.onLoad);
       request.addEventListener('error', params.onError);
 
-      sendRequest(request, params.method, params.url, params.requestData);
+      this.requestData = params.requestData;
+
+      sendRequest(request, params.method, params.url);
     };
 
-    function sendRequest(request, method, url, requestData) {
+    var sendRequest = function(request, method, url) {
+      console.log(this.requestData);
       if (method === 'GET') {
-        url = buildUrl(url, requestData);
+        url = buildUrl(url, this.requestData);
       }
 
       request.open(method, url);
-      handleMethod(request, method, requestData);
+      handleMethod(request, method);
 
-      var requestData = convertRequestDataToString(requestData);
+      console.log(this.requestData);
 
-      request.send(requestData);
-    }
+      request.send(this.requestData);
+    }.bind(this);
 
     function buildUrl(url, requestData) {
       if (requestData === null) {
@@ -41,23 +46,23 @@
       return url;
     }
 
-    function handleMethod(request, method, requestData) {
+    function handleMethod(request, method) {
       if (method === 'GET') {}
 
       if (method === 'POST') {
-        handlePost(request, requestData);
+        handlePost(request);
       }
     }
 
-    function handlePost(request, requestData) {
-      if (handleJsonIfJson(request, requestData)) {
+    function handlePost(request) {
+      if (handleJsonIfJson(request)) {
         return;
       }
 
-      handleStringIfString(request, requestData);
+      handleStringIfString(request);
     }
 
-    function handleJsonIfJson(request, requestData) {
+    function handleJsonIfJson(request) {
       var isJsonHandled = false;
       try {
         JSON.parse(requestData);
@@ -71,13 +76,19 @@
       return isJsonHandled;
     }
 
-    function handleStringIfString(request, requestData) {
+    var handleStringIfString = function(request) {
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    }
+
+      var string = '';
+      for (var prop in this.requestData) {
+        string += prop + '=' + this.requestData[prop] + '&';
+      }
+
+      this.requestData = string;
+    }.bind(this);
 
     function convertRequestDataToString(requestData) {
-      var string = '';
-
+      var string = '?';
       for (var prop in requestData) {
         string += prop + '=' + requestData[prop] + '&';
       }
@@ -98,6 +109,13 @@ if (window.location.href === ADD_BOOKING_PAGE_URL) {
     evt.preventDefault();
 
     var formValues = new FormData(this);
+    var booking = {
+      date: formValues.get('date'),
+      time: formValues.get('time'),
+      name: formValues.get('name'),
+      phone: formValues.get('phone')
+    };
+
     window.ajax.request({
       url: ADD_BOOKING_PAGE_URL,
       method: 'POST',
@@ -122,12 +140,7 @@ if (window.location.href === ADD_BOOKING_PAGE_URL) {
         console.error('Error requesting data from server. Try again later');
         alert('Произошла ошибка, попробуйте позже');
       },
-      requestData: {
-        date: formValues.get('date'),
-        time: formValues.get('time'),
-        name: formValues.get('name'),
-        phone: formValues.get('phone')
-      }
+      requestData: booking
     });
   });
 }
