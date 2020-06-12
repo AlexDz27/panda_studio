@@ -20,7 +20,11 @@ if ($config['MODE'] === 'dev') {
 }
 
 // URLs
-$config['APP_URL'] = "http://{$_SERVER['SERVER_NAME']}/panda_studio";
+if ($config['MODE'] === 'dev') {
+  $config['APP_URL'] = "http://{$_SERVER['SERVER_NAME']}/panda_studio";
+} elseif ($config['MODE'] === 'prod') {
+  $config['APP_URL'] = "http://{$_SERVER['SERVER_NAME']}";
+}
 
 // Paths
 $config['VIEWS_PATH'] = $config['APP_DIR'] . '/views';
@@ -51,8 +55,8 @@ if ($config['MODE'] === 'dev') {
   $config['ajax']['BOOK_FORM'] = 'http://localhost/panda_studio/booking/add';
   $config['ajax']['DELETE_BOOKING'] = 'http://localhost/panda_studio/booking/delete';
 } elseif ($config['MODE'] === 'prod') {
-  $config['ajax']['BOOK_FORM'] = 'http://localhost/panda_studio/booking/add';
-  $config['ajax']['DELETE_BOOKING'] = 'http://localhost/panda_studio/booking/delete';
+  $config['ajax']['BOOK_FORM'] = "http://{$_SERVER['SERVER_NAME']}/booking/add";
+  $config['ajax']['DELETE_BOOKING'] = "http://{$_SERVER['SERVER_NAME']}/booking/delete";
 }
 
 // Access to security domain TODO: change to more secure

@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="public/css/book-btn.css">
     <link rel="stylesheet" href="public/css/book-form.css">
     <link rel="stylesheet" href="public/css/booking-app.css">
+
+    
   
   <?php endif; ?>
 
