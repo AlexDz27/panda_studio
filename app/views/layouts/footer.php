@@ -1,4 +1,8 @@
 <?php if (isset($isAdminPage)): ?>
+  <script>
+    var DELETE_BOOKING_ENDPOINT = '<?= $GLOBALS['config']['ajax']['DELETE_BOOKING'] ?>';
+  </script>
+  <script src="public/js/ajax.js"></script>
   <script src="public/js/admin/admin.js"></script>
   </body>
   </html>
@@ -24,10 +28,12 @@
     </nav>
   </footer>
 
+  <script>
+    var BOOK_FORM_ENDPOINT = '<?= $GLOBALS['config']['ajax']['BOOK_FORM'] ?>';
+  </script>
   <script src="public/js/ajax.js"></script>
   <script src="public/js/mobile-menu.js"></script>
   <script src="public/js/book-form.js"></script>
-  <script src="public/js/index.js"></script>
   </body>
   </html>
 <?php endif; ?>

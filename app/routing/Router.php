@@ -43,8 +43,10 @@ class Router {
     }
 
     if (!$isMatchFound) {
-      echo '404';
+      $homeUrl = $GLOBALS['config']['APP_URL'];
+
       http_response_code(404);
+      echo render('pages/404', compact('homeUrl'));
       die();
     }
   }
@@ -53,7 +55,7 @@ class Router {
   private function getUri() {
     $requestUri = $_SERVER['REQUEST_URI']; 
     // remove when on prod. 9 is for '/frame_ps/example <--' to remove '/frame_ps' '/panda_studio'
-    $this->uri = substr($requestUri, 13);
+    $this->uri = substr($requestUri, $GLOBALS['config']['URI_REMOVE_CHARS_COUNT']);
   }
 
   private function getRoutes() {

@@ -7,6 +7,7 @@ $config['APP_TIMEZONE'] = 'Europe/Minsk';
 
 // App src specific
 $config['APP_DIR'] = getcwd() . '/app';
+$config['URI_REMOVE_CHARS_COUNT'] = 13;
 
 // URLs
 $config['APP_URL'] = "http://{$_SERVER['SERVER_NAME']}/panda_studio";
@@ -33,6 +34,14 @@ $config['db']['charset'] = 'utf8mb4';
 // $config['db']['user'] = 'root';
 // $config['db']['password'] = '';
 // $config['db']['password'] = 'utf8mb4';
+
+// AJAX endpoints
+// -- dev
+$config['ajax']['BOOK_FORM'] = 'http://localhost/panda_studio/booking/add';
+$config['ajax']['DELETE_BOOKING'] = 'http://localhost/panda_studio/booking/delete';
+// -- prod
+// $config['ajax']['BOOK_FORM'] = 'http://localhost/panda_studio/booking/add';
+// $config['ajax']['DELETE_BOOKING'] = 'http://localhost/panda_studio/booking/delete';
 
 // Access to security domain TODO: change to more secure
 $config['security']['login'] = 'admin';

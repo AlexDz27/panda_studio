@@ -25,13 +25,4 @@ class Database {
       throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
   }
-
-  public function getAllBookings() {
-    $query = "SELECT * FROM booking";
-    $statement = $this->pdo->prepare($query);
-    $statement->execute();
-
-    $bookings = $statement->fetchAll();
-    return $bookings;
-  }
 }

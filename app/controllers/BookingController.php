@@ -12,8 +12,6 @@ class BookingController {
   }
 
   public function add() {
-    header("Access-Control-Allow-Origin: *"); // todo: remove
-
     $form = new AddBookingForm();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,13 +35,28 @@ class BookingController {
         $booking['name'] = $form->name;
         $booking['phone'] = $form->phone;
 
-        $response->isFormValid = true;
-        echo json_encode($response);
+        $response->errorMessage = $this->query->createBooking($booking);
+        $response->errorMessage === null ?
+         $response->isFormValid = true : $response->isFormValid = false;
 
-        $this->query->createBooking($booking);
+        echo json_encode($response);
       }
     } else {
       echo renderPage('booking/add', 'Add a booking', compact('form'));
     }
+  }
+
+  public function delete() {
+    $id = (int) $_POST['id'];
+
+    $response = new stdClass();
+    $response->errorMessage = $this->query->deleteBooking($id);
+    if ($response->errorMessage === null) {
+      $response->isDeleted = true;
+    } else {
+      $response->isDeleted = false;
+    }
+
+    echo json_encode($response);
   }
 }

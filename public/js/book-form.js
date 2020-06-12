@@ -55,29 +55,34 @@ function BookingForm() {
     }
 
     window.ajax.request({
-      url: 'http://localhost/panda_studio/add',
+      url: BOOK_FORM_ENDPOINT,
       method: 'POST',
       requestData: booking,
       onLoad: function() {
         var response = JSON.parse(this.response);
         var isFormValid = response.isFormValid;
+        var serverErrorMessage = response.errorMessage;
 
         if (!isFormValid) {
           var message = "";
 
-          for (var errorField in response.errors) {
-            var errorFieldText = response.errors[errorField].required;
-            message += errorFieldText + '\n';
-          }
+          if (serverErrorMessage !== null) {
+            alert('Ошибка при отправлении. Возможно, Вы ввели неверные данные.');
+          } else {
+            for (var errorField in response.errors) {
+              var errorFieldText = response.errors[errorField].required;
+              message += errorFieldText + '\n';
+            }
 
-          alert(message);
+            alert(message);
+          }
         } else {
           alert('Спасибо! Ваша заявка успешно отправлена');
           bookFormContainer.toggle();
         }
       },
       onError: function(error) {
-        alert('Ошибка при отправлении. Попробуйте позже');
+        alert('Ошибка при отправлении. Попробуйте позже.');
         console.error(error);
       }
     })

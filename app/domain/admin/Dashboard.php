@@ -12,19 +12,16 @@ class Dashboard {
   public function __construct() {
     $this->bookingQuery = new BookingQuery();
 
-    $this->bookings = $this->bookingQuery->getAllBookings();
+    $this->prepareBookings();
   }
 
   public function getRenderedDays() {
-    $this->prepareBookings();
     $this->prepareDays();
 
     return $this->renderedDays;
   }
 
   public function getRenderedBookings() {
-    $this->prepareBookings();
-
     return $this->renderedBookings;
   }
 
@@ -55,13 +52,14 @@ class Dashboard {
   }
 
   public function prepareBookings() {
-    // delete past bookings
-    // ...
+    $this->bookingQuery->deleteOldBookings();
 
+    $this->bookings = $this->bookingQuery->getAllBookings();    
+
+    // get '16:00' out of '16:00:00'
     $rawBookings = $this->bookings;
     $renderedBookings = [];
     foreach ($rawBookings as $booking) {
-      // get '16:00' out of '16:00:00'
       $booking['time'] = substr($booking['time'], 0, 5);
 
       $renderedBookings[] = $booking;

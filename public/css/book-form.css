@@ -21,8 +21,8 @@
 
 .book-form-container__close {
   position: absolute;
-  top: 20px;
-  right: 0;
+  top: -12px;
+  right: -105px;
   margin-right: 20px;
   background: transparent;
   border: none;
@@ -30,8 +30,30 @@
   font-size: 82px;
   color: #fff;
 }
+@media (max-width: 535px) {
+  .book-form-container__close {
+    top: -5px;
+    right: -75px;
+    font-size: 50px;
+  }
+}
+@media (max-width: 460px) {
+  .book-form-container__close {
+    top: -2px;
+    right: -41px;
+    font-size: 33px;
+  }
+}
+@media (max-width: 393px) {
+  .book-form-container__close {
+    top: -39px;
+    right: 136px;
+    font-size: 33px;
+  }
+}
 
 .book-form-container__content {
   margin: 0 auto;
   max-width: 360px;
+  position: relative;
 }

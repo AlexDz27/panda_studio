@@ -7,32 +7,17 @@ require_once "{$GLOBALS['config']['APP_DIR']}/functions/app/functions.php";
 </header>
 
 <main class="main">
-  <!-- <div class="booking-day booking-day--today">
-    <h2>10 апреля 2020 (сегодня)</h2>
-    <div class="bookings">
-      <section class="booking">
-        <button class="booking__delete" type="button" data-id="1337">&#10005;</button>
-
-        <ul class="booking-info">
-          <li>Время: 16:00</li>
-          <li>Имя: Наталья</li>
-          <li>Телефон: +375 33 382 98 74</li>
-        </ul>
-      </section>
-    </div>
-  </div> -->
-
   <?php if (empty($days)): ?>
     <h2>К сожалению, не забронировано ни одной брони.</h2>
   <?php else: ?>
-    <?php
-    $today = date('Y-m-d');
-    $firstDayDate = $days[0]['date'];
-    $todayDayClass = $today === $firstDayDate ? 'booking-day--today' : null;
-    ?>
     <?php foreach ($days as $day): ?>
-      <div class="booking-day <?= $today === $day['date'] ? 'booking-day--today' : '' ?>">
-        <h2><?= getBeautifiedDate($day['date']) ?></h2>
+      <?php
+      $today = date('Y-m-d');
+      $isBookingdayToday = $today === $day['date'];
+      ?>
+      <div class="booking-day <?= $isBookingdayToday ? 'booking-day--today' : '' ?>">
+        <?php $bookingDayTodayText = $isBookingdayToday ? ' (сегодня)' : ''; ?>
+        <h2><?= getBeautifiedDate($day['date']) . $bookingDayTodayText ?></h2>
         <div class="bookings">
           <?php foreach ($day['bookings'] as $booking): ?>
             <section class="booking">

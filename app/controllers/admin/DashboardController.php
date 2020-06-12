@@ -22,7 +22,6 @@ class DashboardController {
     $todayDate = $this->dashboard->getTodayDate();
 
     $days = $this->dashboard->getRenderedDays();
-    // var_dump($bookings); die();
 
     echo renderPage(
       'admin/bookings',

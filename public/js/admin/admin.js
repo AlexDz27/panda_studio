@@ -5,10 +5,34 @@ deleteButtons.forEach(function(button) {
 });
 
 function handleDeleteBooking() {
-  confirm('Вы уверены, что хотите удалить эту бронь?');
-  console.log(this.dataset.id);
+  var confirmed = confirm('Вы уверены, что хотите удалить эту бронь?');
+
+  if (confirmed) {
+    deleteBooking(this.dataset.id, this);
+  }
 }
 
-function deleteBooking(id) {
-  // todo: server code
+function deleteBooking(id, button) {
+  window.ajax.request({
+    url: DELETE_BOOKING_ENDPOINT,
+    method: 'POST',
+    requestData: {id: id},
+    onLoad: function() {
+      var response = JSON.parse(this.response);
+      var isDeleted = response.isDeleted;
+      var serverErrorMessage = response.errorMessage;
+
+      if (isDeleted) {
+        var booking = button.parentElement;
+        booking.remove();
+        alert('Бронь успешно удалена.');
+      } else {
+        alert('Возникла ошибка при удалении брони.');  
+      }
+    },
+    onError: function(error) {
+      alert('Возникла ошибка при удалении брони.');
+      console.error(error);
+    }
+  });
 }
