@@ -93,10 +93,10 @@
     <span class="book-btn__text">Записаться</span>
   </button>
 
-  <div class="book-form-container">
+  <section class="book-form-container">
     <div class="book-form-container__content">
       <button class="book-form-container__close" type="button">&#10005;</button>
-      
+
       <div class="booking-app" id="bookingApp">
     <form id="bookingForm" method="post" action="index.html">
       <div class="booking-app__title-container">
