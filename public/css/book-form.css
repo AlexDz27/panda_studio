@@ -5,7 +5,7 @@
   top: 78px;
   min-width: 100vw;
   min-height: 100%;
-  z-index: 150;
+  z-index: 2;
   transform: translateX(150vw);
   transition: transform .8s;
   color: #fff;
